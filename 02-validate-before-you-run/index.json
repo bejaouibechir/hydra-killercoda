@@ -1,0 +1,19 @@
+{
+  "title": "Validate before you run: catching a broken pipeline",
+  "description": "Break a source reference in pipeline.yaml, watch hdrctl run leak a raw internal error, then see hdrctl validate name the exact problem before you ever run anything — in about 8 minutes.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {"title": "Scaffold a working job", "text": "step1/text.md", "verify": "step1/verify.sh"},
+      {"title": "Break it, then run it", "text": "step2/text.md", "verify": "step2/verify.sh"},
+      {"title": "Let hdrctl validate name the problem", "text": "step3/text.md", "verify": "step3/verify.sh"},
+      {"title": "Fix it, validate again, run for real", "text": "step4/text.md", "verify": "step4/verify.sh"}
+    ],
+    "finish": {"text": "finish.md"}
+  },
+  "backend": {"imageid": "ubuntu"}
+}
