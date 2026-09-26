@@ -1,10 +1,10 @@
 # Done
 
-You now know:
+You now know the `validate` → fix → `validate` → `run` loop:
 
-- `hdrctl run` executes first and asks questions later — a broken reference surfaces as a raw, untranslated internal exception;
-- `hdrctl validate` never touches a connector, only cross-checks your YAML, and names the exact problem;
-- running `validate` before `run` costs nothing and saves you from reading Python tracebacks.
+- `hdrctl validate` never touches a connector, only your YAML — and it names problems precisely (`pipeline.from='...' not found in sources.yaml`);
+- a job it rejects, it will explain, not just refuse;
+- once `validate` reports no errors, `run` is the command that actually executes and writes output.
 
 That still leaves one question open: does `validate` (or `test`) ever check that your database credentials actually work? Next lab.
 

@@ -1,13 +1,9 @@
-# Let hdrctl validate name the problem
+# Fix the job
 
-Same broken job, different command:
+Put the correct source id back:
 
-`hdrctl validate brokenjob`{{exec}}
+`sed -i 's/src_csv_typo/src_csv/' brokenjob/pipeline.yaml`{{exec}}
 
-```
-pipeline.from='src_csv_typo' not found in sources.yaml
-...
-1 error(s) detected.
-```
+`cat brokenjob/pipeline.yaml`{{exec}}
 
-No Python exception, no internal class name — just: this id, in this file, doesn't exist. `validate` never touches a connector and never executes anything; it only cross-checks the YAML against itself. That is exactly why it can afford to be this precise, and why running it costs nothing.
+`pipeline.from` now points at `src_csv`, which does exist in `brokenjob/sources.yaml`.

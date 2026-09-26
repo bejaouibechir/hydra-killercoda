@@ -1,2 +1,2 @@
 #!/bin/bash
-test -f brokenjob/pipeline.yaml && test -f brokenjob/data/input.csv
+grep -q "src_csv_typo" brokenjob/pipeline.yaml

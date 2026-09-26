@@ -1,8 +1,4 @@
-# Fix it, validate again, run for real
-
-Put the correct id back:
-
-`sed -i 's/src_csv_typo/src_csv/' brokenjob/pipeline.yaml`{{exec}}
+# hdrctl validate: the job is valid now
 
 `hdrctl validate brokenjob`{{exec}}
 
@@ -10,10 +6,4 @@ Put the correct id back:
 DSL valid — no errors detected.
 ```
 
-Now it is actually safe to run:
-
-`hdrctl run brokenjob`{{exec}}
-
-`cat brokenjob/data/output.csv`{{exec}}
-
-Rows in, rows out, `pipeline.from`/`to` resolved, the `select` transform applied, real output written to disk.
+Same command, same job, different result — because the only thing that changed is the one line `validate` was complaining about. Conclusion: `brokenjob` is now valid.

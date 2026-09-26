@@ -1,18 +1,12 @@
-# Scaffold a working job
+# Create an invalid job
 
-Create a job from the `csv` template — the only built-in template that ships with real sample data, so it can actually run end to end:
+Scaffold a job from the `csv` template — the only built-in template that ships with real sample data, so it can actually run once it is fixed:
 
 `hdrctl init brokenjob --template csv`{{exec}}
 
-Look at what got created:
-
-`find brokenjob -type f`{{exec}}
-
 `cat brokenjob/pipeline.yaml`{{exec}}
 
-`cat brokenjob/data/input.csv`{{exec}}
-
-`pipeline.yaml` just says which source feeds which destination:
+`pipeline.yaml` says which source feeds which destination:
 
 ```yaml
 pipeline:
@@ -20,4 +14,10 @@ pipeline:
   to: dest_csv
 ```
 
-`src_csv` and `dest_csv` have to exist, spelled exactly like that, in `sources.yaml` and `destinations.yaml`. Next: what happens when they don't.
+Now break it — a realistic typo, the kind you get from renaming a source and missing one reference:
+
+`sed -i 's/from: src_csv/from: src_csv_typo/' brokenjob/pipeline.yaml`{{exec}}
+
+`cat brokenjob/pipeline.yaml`{{exec}}
+
+`brokenjob` now points `pipeline.from` at a source, `src_csv_typo`, that does not exist in `sources.yaml`.
