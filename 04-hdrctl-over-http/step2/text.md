@@ -13,3 +13,5 @@
 ```
 
 `"studio": "disabled"` is there because of `--no-studio` — the same field would say `"bundled"` or `"missing"` otherwise. No auth, no job path needed: this endpoint only reports on the server itself.
+
+When you are done, click **Check** to continue.

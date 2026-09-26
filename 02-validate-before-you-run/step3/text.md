@@ -7,3 +7,5 @@ Put the correct source id back:
 `cat brokenjob/pipeline.yaml`{{exec}}
 
 `pipeline.from` now points at `src_csv`, which does exist in `brokenjob/sources.yaml`.
+
+When you are done, click **Check** to continue.

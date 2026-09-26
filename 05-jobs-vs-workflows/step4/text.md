@@ -17,3 +17,5 @@ Each step ran through the same `JobExecutor` a plain `hdrctl run` would use — 
 `cat mypipeline/jobs/job_a/data/output.csv`{{exec}}
 
 `cat mypipeline/jobs/job_b/data/output.csv`{{exec}}
+
+When you are done, click **Check** to continue.

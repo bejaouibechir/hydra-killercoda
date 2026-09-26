@@ -9,3 +9,5 @@ Start the API in the background, without Studio (`--no-studio` — no UI to serv
 `sleep 2 && cat /tmp/serve.log`{{exec}}
 
 You should see `Studio disabled — started with --no-studio` and the API address. It keeps running in the background for the rest of this lab.
+
+When you are done, click **Check** to continue.

@@ -21,3 +21,5 @@ Now break it — a realistic typo, the kind you get from renaming a source and m
 `cat brokenjob/pipeline.yaml`{{exec}}
 
 `brokenjob` now points `pipeline.from` at a source, `src_csv_typo`, that does not exist in `sources.yaml`.
+
+When you are done, click **Check** to continue.

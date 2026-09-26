@@ -15,3 +15,5 @@ Read one of the files:
 `cat myjob/pipeline.yaml`{{exec}}
 
 `pipeline.from: src_input` and `pipeline.to: dest_output` are the two IDs declared in `sources.yaml` and `destinations.yaml` — that's the whole wiring of a job.
+
+When you are done, click **Check** to continue.

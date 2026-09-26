@@ -15,3 +15,5 @@ Same typo trick as before:
 ```
 
 The HTTP call itself still returns `200 OK` — the failure lives inside the JSON body, exactly like it lives inside the CLI's exit code and stdout. A tool calling this API gets the identical error text a person reading a terminal would get.
+
+When you are done, click **Check** to continue.
