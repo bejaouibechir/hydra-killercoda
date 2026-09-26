@@ -1,11 +1,9 @@
-# hdrctl validate agrees
+# Fix the job
 
-`hdrctl validate dbjob`{{exec}}
+Put the correct load mode back:
 
-```
-DSL valid — no errors detected.
-```
+`sed -i 's/mode: upsret/mode: upsert/' dbjob/destinations.yaml`{{exec}}
 
-`validate` is even more static than `test` — it only checks the YAML's shape and that `pipeline.from`/`to` point at ids that exist. It never reads `.env` at all. Of course it passes: nothing here is actually wrong with the *files*.
+`grep mode dbjob/destinations.yaml`{{exec}}
 
 When you are done, click **Check** to continue.

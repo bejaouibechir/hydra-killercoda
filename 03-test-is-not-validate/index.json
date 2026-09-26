@@ -1,6 +1,6 @@
 {
-  "title": "3. test is not validate (and neither checks your database)",
-  "description": "Scaffold a MySQL job with no credentials configured, watch both hdrctl test and hdrctl validate say everything is fine, then see hdrctl run be the only command that actually tries to connect — in about 8 minutes.",
+  "title": "3. hdrctl test: catch a broken job, fix it, test again",
+  "description": "Create a job with a broken destination, let hdrctl test show the error, fix it, then test again until everything passes — and see exactly what test does not check. In about 8 minutes.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,32 +8,12 @@
       "foreground": "setup/foreground.sh"
     },
     "steps": [
-      {
-        "title": "Scaffold a database job",
-        "text": "step1/text.md",
-        "verify": "step1/verify.sh"
-      },
-      {
-        "title": "hdrctl test says everything passes",
-        "text": "step2/text.md",
-        "verify": "step2/verify.sh"
-      },
-      {
-        "title": "hdrctl validate agrees",
-        "text": "step3/text.md",
-        "verify": "step3/verify.sh"
-      },
-      {
-        "title": "hdrctl run is the one that actually tries",
-        "text": "step4/text.md",
-        "verify": "step4/verify.sh"
-      }
+      {"title": "Create a broken job", "text": "step1/text.md", "verify": "step1/verify.sh"},
+      {"title": "hdrctl test shows the error", "text": "step2/text.md", "verify": "step2/verify.sh"},
+      {"title": "Fix the job", "text": "step3/text.md", "verify": "step3/verify.sh"},
+      {"title": "hdrctl test again: everything passes", "text": "step4/text.md", "verify": "step4/verify.sh"}
     ],
-    "finish": {
-      "text": "finish.md"
-    }
+    "finish": {"text": "finish.md"}
   },
-  "backend": {
-    "imageid": "ubuntu"
-  }
+  "backend": {"imageid": "ubuntu"}
 }

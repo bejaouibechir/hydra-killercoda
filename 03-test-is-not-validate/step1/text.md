@@ -1,13 +1,17 @@
-# Scaffold a database job
+# Create a broken job
+
+Scaffold a job from the `mysql` template:
 
 `hdrctl init dbjob --template mysql`{{exec}}
 
-`find dbjob -type f`{{exec}}
+`cat dbjob/destinations.yaml`{{exec}}
 
-`cat dbjob/sources.yaml`{{exec}}
+The destination loads rows with `mode: upsert` (insert or update on `key: [id]`). Now break it — a one-letter typo:
 
-`cat dbjob/.env.example`{{exec}}
+`sed -i 's/mode: upsert/mode: upsret/' dbjob/destinations.yaml`{{exec}}
 
-Only `.env.example` exists — nobody has copied it to `.env` yet, so `DB_HOST`, `DB_USER` and `DB_PASS` are not set anywhere. That is deliberate: keep it this way for the next two steps.
+`grep mode dbjob/destinations.yaml`{{exec}}
+
+`dbjob` now asks for a load mode, `upsret`, that does not exist.
 
 When you are done, click **Check** to continue.

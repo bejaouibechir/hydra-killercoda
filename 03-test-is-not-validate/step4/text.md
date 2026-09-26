@@ -1,16 +1,31 @@
-# hdrctl run is the one that actually tries
+# hdrctl test again: everything passes
 
-`hdrctl run dbjob`{{exec}}
+`hdrctl test dbjob`{{exec}}
 
 ```
-Pipeline FAILED in 0.0s
+  Sources
+  ok  sources.yaml          — DSL valid
+  ok  src_mysql             — mysql (connection not tested in test mode)
 
-Cause:
-SecretResolutionError: Variable d'environnement manquante: DB_HOST
+  Destinations
+  ok  destinations.yaml     — DSL valid
+
+  Transformations
+  ok  transformations.yaml  — 2 step(s) valid
+
+  Environment variables
+  .env not found — ${ENV:...} variables will not be resolved
+
+  ✅ All tests pass — ready to execute.
 ```
 
-Two full "checks" passed, and the first thing that actually touches `DB_HOST` is `run` itself — and it fails in French, from an internal resolver, because nothing ever loaded `.env`.
+The destination error is gone: `dbjob` passes.
 
-Copying `.env.example` to `.env` (`cp dbjob/.env.example dbjob/.env`) would get past this specific error — and immediately hit the real one: there is no MySQL server listening anywhere in this lab, so `run` would then fail again, this time trying to actually open a connection. That second failure is the one `test`'s own "(connection not tested in test mode)" was warning you about all along.
+Before you trust "ready to execute", read two lines again:
 
-When you are done, click **Check** to continue.
+- `connection not tested in test mode` — `test` never opens a connection to MySQL;
+- `.env not found` — `DB_HOST`, `DB_USER`, `DB_PASS` are not set anywhere yet.
+
+`test` checks the *files*. It tells you honestly what it did not check — the connection and the credentials are only exercised by `hdrctl run`.
+
+When you are done, click **Check** to finish.
