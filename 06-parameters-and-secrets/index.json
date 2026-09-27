@@ -1,5 +1,5 @@
 {
-  "title": "7. Parameters and secrets: one job, two environments",
+  "title": "6. Parameters and secrets: one job, two environments",
   "description": "Run the same Hydra job against a dev and a prod MySQL database without changing a single line of it. Parameters live in version control, secrets never do — in about 15 minutes.",
   "details": {
     "intro": {
