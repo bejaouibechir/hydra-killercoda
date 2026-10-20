@@ -1,19 +1,32 @@
-# Scaffold a job
+# Scaffold a project
 
-`hdrctl init` creates a job from a template — sources, destinations, pipeline, and (optionally) transformations, all in YAML:
+`hdrctl init` creates a Hydra ETL project from a template: one job, the workflow that runs it, and the folders around them.
 
-`hdrctl init myjob`{{exec}}
+`hdrctl init myproject`{{exec}}
 
 Look at what it created:
 
-`find myjob -type f`{{exec}}
+`find myproject | sort`{{exec}}
 
-Notice its own suggestion at the bottom: it tells you to run `hydra test myjob` next, not `validate`. Keep that in mind — the difference between the two is the whole subject of a later lab.
+- `jobs/job1/` — the job itself: `sources.yaml`, `destinations.yaml`, `pipeline.yaml`, `transformations.yaml`, and sample data in `data/input.csv`;
+- `workflows/workflow1.yaml` — the workflow that runs `job1`;
+- `Data/` and `output/` — the project's conventional folders, empty for now;
+- `.hydra/project.json` — marks the project root.
 
-Read one of the files:
+Read how the job is wired:
 
-`cat myjob/pipeline.yaml`{{exec}}
+`cat myproject/jobs/job1/pipeline.yaml`{{exec}}
 
-`pipeline.from: src_input` and `pipeline.to: dest_output` are the two IDs declared in `sources.yaml` and `destinations.yaml` — that's the whole wiring of a job.
+```yaml
+pipeline:
+  from: src_csv
+  to: dest_csv
+```
+
+`src_csv` and `dest_csv` are the two IDs declared in `sources.yaml` and `destinations.yaml`:
+
+`cat myproject/jobs/job1/sources.yaml myproject/jobs/job1/destinations.yaml`{{exec}}
+
+That's the whole wiring of a job: one source ID, one destination ID, and `pipeline.yaml` connecting them.
 
 When you are done, click **Check** to continue.

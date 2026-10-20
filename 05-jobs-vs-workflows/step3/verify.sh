@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /root/lab || exit 1
-out=$(hdrctl workflow list . 2>/dev/null)
-echo "$out" | grep -q "mypipeline" && echo "$out" | grep -q "3 steps"
+W=chainproject/workflows/workflow1.yaml
+grep -q "jobs/job2" $W && grep -q "depends_on: \[job1\]" $W && hdrctl workflow validate $W >/dev/null 2>&1

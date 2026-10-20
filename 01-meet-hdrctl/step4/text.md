@@ -1,15 +1,25 @@
 # Let hdrctl list check your reading
 
-Before running anything, list what hdrctl itself sees in this folder:
+List the jobs `hdrctl` sees in the project's `jobs/` folder:
 
-`hdrctl list`{{exec}}
+`hdrctl list myproject/jobs`{{exec}}
 
-Only `myjob` shows up — not `mypipeline`. `hdrctl list` looks for job folders: a `sources.yaml`, `destinations.yaml` and `pipeline.yaml` sitting together. `mypipeline` is a workflow project — its jobs are one level deeper, inside `mypipeline/jobs/`. That distinction, a job versus a workflow, and which commands see which, is exactly what the `hdrctl workflow` lab is about.
+`job1` shows up as `✅ OK`, tagged `[transforms]` because it has a `transformations.yaml`. `hdrctl list` looks one level deep in the folder you give it for job folders — a `sources.yaml`, `destinations.yaml` and `pipeline.yaml` sitting together. That's why you point it at `jobs/`, not at the project root:
 
-List the jobs a workflow actually contains, with `hdrctl workflow list` this time:
+`hdrctl list myproject`{{exec}}
 
-`hdrctl workflow list mypipeline`{{exec}}
+`No jobs found`: `myproject/` holds `jobs/` and `workflows/`, not a job.
 
-Compare what it prints to what you read in the Editor — same two jobs, same order.
+That's the rule for the whole CLI: `hdrctl validate`, `test`, `run` and `list` take a **job folder** (or, for `list`, a folder of jobs); `hdrctl workflow validate` and `run` take a **workflow file**. Run the job alone, without its workflow:
+
+`hdrctl run myproject/jobs/job1`{{exec}}
+
+```
+  ✅ Pipeline completed successfully
+  Rows read   : 3
+  Rows written: 2
+```
+
+Same job, same result. The workflow adds nothing to what a job does — it decides *when* jobs run and *in which order*.
 
 Click **Check** to finish.

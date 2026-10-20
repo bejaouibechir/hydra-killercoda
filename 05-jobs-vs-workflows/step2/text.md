@@ -1,7 +1,34 @@
-# hdrctl list only sees the job
+# Jobs on their own: list, validate, run
 
-`hdrctl list`{{exec}}
+The job commands see both jobs:
 
-Only `solojob` shows up. `hdrctl list` looks one level deep for folders that directly contain `sources.yaml` + `destinations.yaml` + `pipeline.yaml` — it does not recurse. `mypipeline/` fails that check (it holds `workflow.yaml`, not a pipeline of its own), and `mypipeline/jobs/job_a` and `job_b` — which *would* pass the check — are never looked at, because `hdrctl list` never opens `mypipeline/jobs/` in the first place.
+`hdrctl list chainproject/jobs`{{exec}}
+
+```
+  job1                           ✅ OK                        [transforms]
+  job2                           ✅ OK                        [transforms]
+```
+
+`job2`'s YAML is consistent — its `pipeline.from` matches the ID in its `sources.yaml`:
+
+`hdrctl validate chainproject/jobs/job2`{{exec}}
+
+```
+  ✅ DSL valid — no errors detected.
+```
+
+Now run it on its own:
+
+`hdrctl run chainproject/jobs/job2`{{exec}}
+
+```
+  ❌ Pipeline FAILED
+  ValueError: CSVConnector [src_job1_output]: Fichier source introuvable.
+  Chemin demandé : ../job1/data/output.csv
+```
+
+It fails, and that's the point of this step. (The connector's detail message is in French: *source file not found*.) `job2` is valid, but it needs a file that only exists **after `job1` has run** — and `validate` cannot know that, because it checks the YAML, not the order in which things happen.
+
+Ordering jobs is not a job's concern. It is what a workflow is for.
 
 When you are done, click **Check** to continue.

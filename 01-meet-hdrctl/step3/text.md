@@ -1,13 +1,38 @@
-# Scaffold a full workflow
+# Validate and run the project's workflow
 
-A workflow is several jobs chained together. `hdrctl workflow init` scaffolds all of it at once — the orchestration file and every job it references, each with real sample data:
+The bottom of `hdrctl init`'s output suggested two commands: validate the workflow, then run it. Read the workflow first — open `myproject/workflows/workflow1.yaml` in the **Editor** tab, or:
 
-`hdrctl workflow init mypipeline`{{exec}}
+`cat myproject/workflows/workflow1.yaml`{{exec}}
 
-`find mypipeline -type f`{{exec}}
+One step, `job1`, pointing at `../jobs/job1` — paths in a workflow are relative to the workflow file.
 
-Two jobs (`job_a`, `job_b`) built exactly like `myjob` in the previous step — sources, destinations, pipeline, transformations, plus a `data/input.csv` this time — and one `workflow.yaml` that runs `job_a`, then `job_b`, then logs a message.
+Check it without running anything:
 
-Open `mypipeline/workflow.yaml` in the **Editor** tab on the left and read it end to end before the next step — no command needed, just look.
+`hdrctl workflow validate myproject/workflows/workflow1.yaml`{{exec}}
+
+```
+  ✅ Workflow valid — no errors detected.
+```
+
+Then run it:
+
+`hdrctl workflow run myproject/workflows/workflow1.yaml`{{exec}}
+
+```
+  ✓  Step 'job1' OK (0.2s)
+  ✅ Workflow 'workflow1' completed in 0.2s — 1/1 steps OK
+```
+
+The job wrote its result next to its input:
+
+`cat myproject/jobs/job1/data/output.csv`{{exec}}
+
+```
+id,name,value
+1,Alice,100.0
+2,Bob,200.0
+```
+
+Three rows in, two out: the last step of `myproject/jobs/job1/transformations.yaml`, `filter: value > 0`, drops `Charlie` (value `-5`).
 
 When you are done, click **Check** to continue.

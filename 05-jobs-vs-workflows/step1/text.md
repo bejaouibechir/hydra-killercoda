@@ -1,17 +1,48 @@
-# Scaffold a job and a workflow
+# Scaffold a project and add a second job
 
-A plain job — one source, one destination:
+Create a project — it comes with `job1` and `workflow1`:
 
-`hdrctl init solojob --template csv`{{exec}}
+`hdrctl init chainproject --template csv`{{exec}}
 
-A full workflow project — a `workflow.yaml` that chains two jobs plus a notify step, each job scaffolded with its own real sample data:
+`job1` reads `data/input.csv`, keeps rows with `value > 0`, and writes `data/output.csv`. Add a `job2` that **reads job1's output** and keeps only the rows above 150. Start from a copy of `job1`:
 
-`hdrctl workflow init mypipeline`{{exec}}
+`cp -r chainproject/jobs/job1 chainproject/jobs/job2 && rm chainproject/jobs/job2/data/input.csv chainproject/jobs/job2/README.md`{{exec}}
 
-`find mypipeline -type f`{{exec}}
+Point its source at `job1`'s output — the path is relative to `job2`'s own folder:
 
-`cat mypipeline/workflow.yaml`{{exec}}
+```
+cat > chainproject/jobs/job2/sources.yaml <<'YAML'
+sources:
+  src_job1_output:
+    type: csv
+    extract:
+      table: ../job1/data/output.csv
+YAML
+```{{exec}}
 
-`mypipeline/jobs/job_a` and `mypipeline/jobs/job_b` are ordinary jobs underneath — same `sources.yaml`/`destinations.yaml`/`pipeline.yaml`/`data/input.csv` shape as `solojob`. The only new thing is `workflow.yaml`, which says `job_a` runs, then `job_b` (`depends_on: ["job_a"]`), then a `log` action.
+```
+cat > chainproject/jobs/job2/pipeline.yaml <<'YAML'
+pipeline:
+  from: src_job1_output
+  to: dest_csv
+YAML
+```{{exec}}
+
+CSV values arrive as text, so cast `value` before comparing it:
+
+```
+cat > chainproject/jobs/job2/transformations.yaml <<'YAML'
+steps:
+  - cast:
+      mapping:
+        value: float
+  - filter:
+      expr: "value > 150"
+YAML
+```{{exec}}
+
+`destinations.yaml` stays as copied: `job2` writes its own `data/output.csv`, inside `jobs/job2/`.
+
+`find chainproject/jobs | sort`{{exec}}
 
 When you are done, click **Check** to continue.

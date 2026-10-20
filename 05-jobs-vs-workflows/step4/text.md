@@ -1,50 +1,29 @@
-# Validate and run the workflow
+# Run the workflow
 
-First, check the manifest:
-
-`hdrctl workflow validate mypipeline/workflow.yaml`{{exec}}
+`hdrctl workflow run chainproject/workflows/workflow1.yaml`{{exec}}
 
 ```
-✅ Workflow valid — no errors detected.
-```
-
-The scaffolded jobs come with a placeholder filter (`expr: "1 == 1"   # Remplacer par votre logique`) that you are meant to replace with real logic:
-
-`cat mypipeline/jobs/job_a/transformations.yaml`{{exec}}
-
-Give both jobs a real transformation — cast `value` to a number, keep rows above 6:
-
-```
-for j in job_a job_b; do cat > mypipeline/jobs/$j/transformations.yaml << 'YAML'
-version: "1.0"
-transformations:
-  steps:
-    - cast:
-        mapping:
-          value: float
-    - filter:
-        expr: "value > 6"
-YAML
-done
-```{{exec}}
-
-Now run the whole workflow:
-
-`hdrctl workflow run mypipeline/workflow.yaml`{{exec}}
-
-```
-  ✓  Step 'job_a' OK (0.2s)
-  ✓  Step 'job_b' OK (0.0s)
+  ✓  Step 'job1' OK (0.2s)
+  ✓  Step 'job2' OK (0.0s)
   ✓  Step 'notify' OK (0.0s)
-  ✅ Workflow 'mypipeline' completed in 0.2s — 3/3 steps OK
+  ✅ Workflow 'workflow1' completed in 0.2s — 3/3 steps OK
 ```
 
-Each step ran through the same executor a plain `hdrctl run` uses — `job_b` only started because `job_a` succeeded first (`depends_on: ["job_a"]`). Check the results:
+Same `job2` that failed in step 2 — this time it succeeds, because `job1` ran first and produced the file `job2` reads. Each step runs through the same executor as a plain `hdrctl run`; `depends_on` only sequences the calls.
 
-`cat mypipeline/jobs/job_a/data/output.csv`{{exec}}
+Follow the data through both jobs:
 
-`cat mypipeline/jobs/job_b/data/output.csv`{{exec}}
+`cat chainproject/jobs/job1/data/input.csv`{{exec}}
 
-`item_c` (value `5.75`) was filtered out of both.
+`cat chainproject/jobs/job1/data/output.csv`{{exec}}
+
+`cat chainproject/jobs/job2/data/output.csv`{{exec}}
+
+```
+id,name,value
+2,Bob,200.0
+```
+
+`job1` dropped `Charlie` (`-5`), `job2` dropped `Alice` (`100`): one row left.
 
 When you are done, click **Check** to finish.

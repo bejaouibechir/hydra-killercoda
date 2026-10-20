@@ -1,7 +1,10 @@
-# hdrctl vs hdrctl workflow
+# Jobs vs workflows
 
-`hdrctl` has two command namespaces that look alike — `init`, `validate`, `list`, `run` exist at the root, and the same four verbs exist again under `hdrctl workflow`. They are not aliases of each other: the root commands operate on one job (one source, one destination, one pipeline); the `workflow` commands operate on a `workflow.yaml` that orchestrates several jobs as a DAG.
+A Hydra ETL project holds two kinds of things, and `hdrctl` has a command family for each:
 
-In this lab you will scaffold one of each side by side, then watch each `list` command find only its own kind — before running the workflow for real.
+- **jobs**, in `jobs/<name>/` — one source, one destination, one pipeline. `hdrctl validate`, `test`, `run` and `list` act on them;
+- **workflows**, in `workflows/<name>.yaml` — a DAG that decides which jobs run, in which order. `hdrctl workflow validate` and `hdrctl workflow run` act on them.
+
+In this lab you will add a second job that reads the first job's output, see it fail when it runs on its own too early, then let the workflow run both in the right order.
 
 Hydra ETL installs in the background while you read this.

@@ -3,11 +3,11 @@
 You now know:
 
 - `hdrctl --version`, `--help` and `--lang` — read-only, no project needed;
-- `hdrctl init` scaffolds one job;
-- `hdrctl workflow init` scaffolds a whole pipeline, jobs and sample data included;
-- `hdrctl list` only sees jobs, not workflow projects — `hdrctl workflow list` is the one for those.
+- `hdrctl init` scaffolds a project: a job in `jobs/job1/`, and the workflow that runs it in `workflows/workflow1.yaml`;
+- `hdrctl workflow validate` and `hdrctl workflow run` take a workflow file; `hdrctl run` takes one job folder;
+- `hdrctl list` lists the jobs inside the folder you point it at — `myproject/jobs`, not `myproject`.
 
-Nothing here checked whether the YAML is actually *correct* — that's next.
+Everything here was correct from the start. What happens when a YAML file is wrong — that's next.
 
 **Next**
 

@@ -1,3 +1,4 @@
 #!/bin/bash
 cd /root/lab || exit 1
-test -f mypipeline/jobs/job_a/data/output.csv && test -f mypipeline/jobs/job_b/data/output.csv
+F=chainproject/jobs/job2/data/output.csv
+test -f $F && grep -q "Bob" $F && ! grep -q "Alice" $F

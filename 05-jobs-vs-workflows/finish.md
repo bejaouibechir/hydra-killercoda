@@ -2,13 +2,13 @@
 
 You now know:
 
-- root commands (`init`, `validate`, `test`, `run`, `list`) act on one job;
-- `workflow` commands (`init`, `validate`, `run`, `list`) act on a `workflow.yaml` DAG of jobs;
-- `hdrctl list` looks one level deep for job directories and never recurses into `jobs/`;
-- `hdrctl workflow list` recurses for `workflow.yaml` files and ignores plain job directories;
-- a workflow step still runs through the same executor a plain `hdrctl run` uses — `depends_on` just sequences the calls.
+- a project holds **jobs** (`jobs/<name>/`) and **workflows** (`workflows/<name>.yaml`);
+- `hdrctl list`, `validate`, `test` and `run` act on jobs — `list` on a folder of jobs, the others on one job folder;
+- `hdrctl workflow validate` and `hdrctl workflow run` act on a workflow file;
+- a job can be valid and still fail if it runs too early — `validate` checks the YAML, not the order;
+- `depends_on` is what puts jobs in order; each step still runs through the same executor as `hdrctl run`.
 
-That closes the CLI-discovery series: install and flags, validate vs. run, test vs. validate, the API, and now jobs vs. workflows.
+Next in the series: one job, two environments — parameters and secrets.
 
 **Next**
 
