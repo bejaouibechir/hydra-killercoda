@@ -2,6 +2,11 @@
   "title": "4. hdrctl over HTTP: the API is the CLI",
   "description": "Start hdrctl serve, call /api/health, then validate a job over HTTP twice — once clean, once broken — and see the JSON response carry the exact same text hdrctl validate prints in a terminal. In about 8 minutes.",
   "details": {
+    "assets": {
+      "host01": [
+        {"file": "hydra-etl-0.1.4.vsix", "target": "/root/.hydra-vscode"}
+      ]
+    },
     "intro": {
       "text": "intro.md",
       "background": "setup/background.sh",

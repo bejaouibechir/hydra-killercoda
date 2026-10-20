@@ -2,6 +2,11 @@
   "title": "5. Jobs vs workflows: chain two jobs in one project",
   "description": "Add a second job to a Hydra ETL project, watch it fail when run out of order, then wire both jobs in the project's workflow so the DAG runs them in the right order — in about 10 minutes.",
   "details": {
+    "assets": {
+      "host01": [
+        {"file": "hydra-etl-0.1.4.vsix", "target": "/root/.hydra-vscode"}
+      ]
+    },
     "intro": {
       "text": "intro.md",
       "background": "setup/background.sh",

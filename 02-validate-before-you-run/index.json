@@ -2,6 +2,11 @@
   "title": "2. Validate before you run: catching a broken pipeline",
   "description": "Create a job with a broken source reference, let hdrctl validate catch it, fix it, validate again, and only then run it — in about 8 minutes.",
   "details": {
+    "assets": {
+      "host01": [
+        {"file": "hydra-etl-0.1.4.vsix", "target": "/root/.hydra-vscode"}
+      ]
+    },
     "intro": {
       "text": "intro.md",
       "background": "setup/background.sh",

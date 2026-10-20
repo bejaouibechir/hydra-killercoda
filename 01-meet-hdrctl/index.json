@@ -2,6 +2,11 @@
   "title": "1. Meet hdrctl: projects, jobs and workflows",
   "description": "Install Hydra ETL, scaffold a project, read its job and its workflow, run it, then let hdrctl list check your reading — in about 10 minutes.",
   "details": {
+    "assets": {
+      "host01": [
+        {"file": "hydra-etl-0.1.4.vsix", "target": "/root/.hydra-vscode"}
+      ]
+    },
     "intro": {
       "text": "intro.md",
       "background": "setup/background.sh",
