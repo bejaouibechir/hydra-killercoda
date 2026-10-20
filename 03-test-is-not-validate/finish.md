@@ -8,6 +8,7 @@ You now know the `test` → fix → `test` loop:
 
 **Next**
 
+- Watch this lab as a video: [Check a MySQL job with hdrctl test](https://youtu.be/t74dE_-Nyhg) — all videos in [Hydra Academy](https://hydraetl.com/academy/?utm_source=killercoda&utm_medium=lab&utm_campaign=academy)
 - Install it on your machine: `pip install hydra-etl`
 - Docs and examples: [hydraetl.com](https://hydraetl.com/?utm_source=killercoda&utm_medium=lab&utm_campaign=hdrctl-test)
 - Source (AGPL-3.0): [github.com/bejaouibechir/Hydra](https://github.com/bejaouibechir/Hydra)

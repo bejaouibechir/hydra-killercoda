@@ -11,6 +11,7 @@ Everything here was correct from the start. What happens when a YAML file is wro
 
 **Next**
 
+- Watch this lab as a video: [Getting started with hdrctl](https://youtu.be/S9ACiT1dCJU) · [Create a project and explore its structure](https://youtu.be/9cCMWptQEgE) — all videos in [Hydra Academy](https://hydraetl.com/academy/?utm_source=killercoda&utm_medium=lab&utm_campaign=academy)
 - Install it on your machine: `pip install hydra-etl`
 - Docs and examples: [hydraetl.com](https://hydraetl.com/?utm_source=killercoda&utm_medium=lab&utm_campaign=meet-hdrctl)
 - Source (AGPL-3.0): [github.com/bejaouibechir/Hydra](https://github.com/bejaouibechir/Hydra)

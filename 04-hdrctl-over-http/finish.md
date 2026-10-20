@@ -10,6 +10,7 @@ If you already trust `hdrctl`'s output for a job, you can trust this API's outpu
 
 **Next**
 
+- Watch this lab as a video: [hdrctl serve and the REST API](https://youtu.be/RkcdctjkmHg) — all videos in [Hydra Academy](https://hydraetl.com/academy/?utm_source=killercoda&utm_medium=lab&utm_campaign=academy)
 - Install it on your machine: `pip install "hydra-etl[server]"`
 - Docs and examples: [hydraetl.com](https://hydraetl.com/?utm_source=killercoda&utm_medium=lab&utm_campaign=hdrctl-over-http)
 - Source (AGPL-3.0): [github.com/bejaouibechir/Hydra](https://github.com/bejaouibechir/Hydra)
