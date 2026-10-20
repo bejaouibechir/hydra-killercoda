@@ -1,8 +1,10 @@
 # hdrctl test shows the error
 
-`hdrctl test dbjob`{{exec}}
+`hdrctl test dbproject/jobs/job1`{{exec}}
 
 ```
+  🔍 Test job  job1
+
   Sources
   ok  sources.yaml          — DSL valid
   ok  src_mysql             — mysql (connection not tested in test mode)
@@ -18,6 +20,6 @@ destinations.dest_mysql.load.mode
   ❌ Errors detected — fix before executing.
 ```
 
-`test` checks each section on its own and points at the broken one: in `destinations.yaml`, the field `dest_mysql.load.mode` got `'upsret'`, and the only accepted values are `append`, `replace` or `upsert`. Conclusion: `dbjob` is not ready to run.
+`test` checks each section on its own and points at the broken one: in `destinations.yaml`, the field `dest_mysql.load.mode` got `'upsret'`, and the only accepted values are `append`, `replace` or `upsert`. Conclusion: `job1` is not ready to run.
 
 When you are done, click **Check** to continue.

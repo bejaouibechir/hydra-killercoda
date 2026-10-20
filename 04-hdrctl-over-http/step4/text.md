@@ -2,9 +2,9 @@
 
 Same typo trick as before:
 
-`sed -i 's/from: src_csv/from: src_csv_typo/' apijob/pipeline.yaml`{{exec}}
+`sed -i 's/from: src_csv/from: src_csv_typo/' apiproject/jobs/job1/pipeline.yaml`{{exec}}
 
-`curl -s -X POST http://127.0.0.1:5678/api/jobs/validate -H "Content-Type: application/json" -d '{"path": "apijob"}' | /opt/hydra/bin/python -m json.tool`{{exec}}
+`curl -s -X POST http://127.0.0.1:5678/api/jobs/validate -H "Content-Type: application/json" -d '{"path": "apiproject/jobs/job1"}' | /opt/hydra/bin/python -m json.tool`{{exec}}
 
 ```json
 {

@@ -1,6 +1,10 @@
 # Scaffold a job and start hdrctl serve
 
-`hdrctl init apijob --template csv`{{exec}}
+`hdrctl init apiproject --template csv`{{exec}}
+
+`find apiproject -type f | sort`{{exec}}
+
+`hdrctl init` creates a project; the job the API will validate lives in `apiproject/jobs/job1` — that is the `path` you will send in the JSON body.
 
 Start the API in the background, without Studio (`--no-studio` — no UI to serve, just the REST surface):
 

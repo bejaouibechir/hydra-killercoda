@@ -2,9 +2,10 @@
 
 It is now safe to run:
 
-`hdrctl run brokenjob`{{exec}}
+`hdrctl run brokenproject/jobs/job1`{{exec}}
 
 ```
+  ▶  Pipeline  job1  — brokenproject/jobs/job1
   ✅ Pipeline completed successfully in 0.3s
   Rows read   : 3
   Rows written: 2
@@ -12,11 +13,11 @@ It is now safe to run:
 
 Three rows read, two written — why? Look at the transformations:
 
-`cat brokenjob/transformations.yaml`{{exec}}
+`cat brokenproject/jobs/job1/transformations.yaml`{{exec}}
 
 The last step, `filter: value > 0`, drops `Charlie` (value `-5`). Check the result:
 
-`cat brokenjob/data/output.csv`{{exec}}
+`cat brokenproject/jobs/job1/data/output.csv`{{exec}}
 
 ```
 id,name,value

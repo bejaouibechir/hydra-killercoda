@@ -6,7 +6,7 @@
 {
     "message": "Hydra ETL API is running",
     "status": "ok",
-    "version": "0.11.2",
+    "version": "0.11.4",
     "dsl_version": "...",
     "studio": "disabled"
 }

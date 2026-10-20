@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /root/lab || exit 1
-test -f brokenjob/data/output.csv
+test -f brokenproject/jobs/job1/data/output.csv

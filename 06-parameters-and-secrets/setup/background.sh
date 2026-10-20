@@ -126,13 +126,13 @@ ls -R /root/lab
 
 # --- 3. Hydra ETL. Fall back to a system-wide pip if venv is unavailable.
 apt-get install -y -qq python3-venv
-if python3 -m venv /opt/hydra && /opt/hydra/bin/pip install --quiet "hydra-etl>=0.11.2" mysql-connector-python; then
+if python3 -m venv /opt/hydra && /opt/hydra/bin/pip install --quiet "hydra-etl>=0.11.4" mysql-connector-python; then
   ln -sf /opt/hydra/bin/hdrctl /usr/local/bin/hdrctl
   echo "--- hydra installed in venv ---"
 else
   echo "--- venv failed, falling back to system pip ---"
-  pip3 install --quiet --break-system-packages "hydra-etl>=0.11.2" mysql-connector-python \
-    || pip3 install --quiet "hydra-etl>=0.11.2" mysql-connector-python
+  pip3 install --quiet --break-system-packages "hydra-etl>=0.11.4" mysql-connector-python \
+    || pip3 install --quiet "hydra-etl>=0.11.4" mysql-connector-python
 fi
 command -v hdrctl && hdrctl --version
 

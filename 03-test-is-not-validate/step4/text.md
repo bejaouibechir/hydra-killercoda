@@ -1,8 +1,10 @@
 # hdrctl test again: everything passes
 
-`hdrctl test dbjob`{{exec}}
+`hdrctl test dbproject/jobs/job1`{{exec}}
 
 ```
+  🔍 Test job  job1
+
   Sources
   ok  sources.yaml          — DSL valid
   ok  src_mysql             — mysql (connection not tested in test mode)
@@ -17,9 +19,10 @@
   .env not found — ${ENV:...} variables will not be resolved
 
   ✅ All tests pass — ready to execute.
+  Run: hydra run dbproject/jobs/job1
 ```
 
-The destination error is gone: `dbjob` passes.
+The destination error is gone: `job1` passes.
 
 Before you trust "ready to execute", read two lines again:
 

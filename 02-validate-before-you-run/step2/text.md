@@ -1,8 +1,10 @@
 # hdrctl validate: the job is not valid
 
-`hdrctl validate brokenjob`{{exec}}
+`hdrctl validate brokenproject/jobs/job1`{{exec}}
 
 ```
+  🔍 DSL Validation  job1
+  ok  pipeline.yaml                        — present
   ok  sources.yaml                         — Pydantic valid
   ok  destinations.yaml                    — Pydantic valid
   ok  transformations.yaml                 — Pydantic valid
@@ -12,6 +14,6 @@
   ❌ ... error(s) detected.
 ```
 
-`validate` names the exact problem: this id, in this file, does not exist. It never executed anything to find that out — it only cross-checked `pipeline.yaml` against `sources.yaml`. Conclusion: `brokenjob` is not valid yet.
+`validate` names the exact problem: this id, in this file, does not exist. It never executed anything to find that out — it only cross-checked `pipeline.yaml` against `sources.yaml`. Conclusion: `job1` is not valid yet.
 
 When you are done, click **Check** to continue.
