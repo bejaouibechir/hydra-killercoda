@@ -1,0 +1,16 @@
+version: "1.0"
+workflow:
+  name: read_error_messages
+  trigger:
+    type: manual
+  steps:
+    - name: start
+      type: action
+      action: log
+      params:
+        message: "Starting the workflow."
+    - name: notify
+      type: action
+      params:
+        url: https://example.invalid/hydra-lab
+      depends_on: [start]

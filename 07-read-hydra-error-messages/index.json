@@ -1,0 +1,75 @@
+{
+  "title": "7. Read Hydra's error messages",
+  "description": "Diagnose and fix three workflow errors with dry-run, then discover why an omitted version is accepted. About 12 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "lab07.py",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "solution.yaml",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "unknown-action.yaml",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "unknown-key.yaml",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "missing-action.yaml",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "no-version.yaml",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "editor.sh",
+          "target": "/root/lab/lab07-resources"
+        },
+        {
+          "file": "hydra-etl-0.1.4.vsix",
+          "target": "/root/.hydra-vscode"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix an unknown action",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix an unknown key",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Restore a required field",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Missing version: accepted, not an error",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
