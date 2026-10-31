@@ -1,0 +1,82 @@
+{
+  "title": "9. Read from a SQL database",
+  "description": "Read MySQL products, calculate quantity times unit price, and load product totals into PostgreSQL. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "lab09.py",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "sources.yaml",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "transformations.solution.yaml",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "mysql-init.sql",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "postgres-init.sql",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "expected.json",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "start-databases.sh",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "editor.sh",
+          "target": "/root/lab/lab09-resources"
+        },
+        {
+          "file": "hydra-etl-0.1.4.vsix",
+          "target": "/root/.hydra-vscode"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Inspect the databases and the job",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Calculate and shape the destination rows",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Transfer and verify",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

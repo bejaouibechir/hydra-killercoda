@@ -1,0 +1,36 @@
+name: hydra-lab09
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hydra-lab09-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: lab09-root-only
+      MYSQL_DATABASE: shop
+      MYSQL_USER: lab09_reader
+      MYSQL_PASSWORD: lab09-mysql-only
+    ports:
+      - "127.0.0.1:3309:3306"
+    volumes:
+      - ./mysql-init.sql:/docker-entrypoint-initdb.d/01-products.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_PASSWORD mysql --protocol=TCP -h 127.0.0.1 -u lab09_reader shop -N -e 'SELECT COUNT(*) FROM product'"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 20s
+  postgres:
+    image: postgres:16
+    container_name: hydra-lab09-postgres
+    environment:
+      POSTGRES_USER: lab09_writer
+      POSTGRES_PASSWORD: lab09-postgres-only
+      POSTGRES_DB: warehouse
+    ports:
+      - "127.0.0.1:5439:5432"
+    volumes:
+      - ./postgres-init.sql:/docker-entrypoint-initdb.d/01-totals.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "PGPASSWORD=$$POSTGRES_PASSWORD psql -h 127.0.0.1 -U lab09_writer -d warehouse -Atc 'SELECT COUNT(*) FROM product_totals'"]
+      interval: 5s
+      timeout: 5s
+      retries: 60

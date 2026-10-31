@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "product_name": "Notebook",
+    "total": "50.00"
+  },
+  {
+    "id": 2,
+    "product_name": "Keyboard",
+    "total": "59.85"
+  },
+  {
+    "id": 3,
+    "product_name": "Monitor",
+    "total": "299.80"
+  },
+  {
+    "id": 4,
+    "product_name": "USB cable",
+    "total": "0.00"
+  },
+  {
+    "id": 5,
+    "product_name": "Mouse",
+    "total": "52.50"
+  }
+]

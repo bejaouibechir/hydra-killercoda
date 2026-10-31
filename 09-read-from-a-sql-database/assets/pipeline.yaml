@@ -1,0 +1,4 @@
+version: "1.0"
+pipeline:
+  from: mysql_product
+  to: postgres_totals

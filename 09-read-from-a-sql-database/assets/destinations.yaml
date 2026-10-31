@@ -1,0 +1,14 @@
+version: "1.0"
+destinations:
+  postgres_totals:
+    type: postgresql
+    connection:
+      host: 127.0.0.1
+      port: 5439
+      user: lab09_writer
+      password: ${SECRET:PG_PASSWORD}
+      database: warehouse
+      schema: public
+    load:
+      table: product_totals
+      mode: replace

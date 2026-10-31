@@ -1,0 +1,12 @@
+version: "1.0"
+sources:
+  mysql_product:
+    type: mysql
+    connection:
+      host: 127.0.0.1
+      port: 3309
+      user: lab09_reader
+      password: ${SECRET:MYSQL_PASSWORD}
+      database: shop
+    extract:
+      table: product

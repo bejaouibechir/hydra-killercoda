@@ -1,0 +1,15 @@
+version: "1.0"
+transformations:
+  steps:
+    - cast:
+        mapping:
+          unit_price: float
+          quantity: int
+    - calculate:
+        column: total
+        expr: "quantity * unit_price"
+    - rename:
+        mapping:
+          name: product_name
+    - select:
+        columns: [id, product_name, total]
