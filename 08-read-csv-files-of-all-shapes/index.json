@@ -1,0 +1,62 @@
+{
+  "title": "8. Read CSV files of all shapes",
+  "description": "Read comma, semicolon and Latin-1 CSV files; diagnose incorrect separators and encodings. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "lab08.py",
+          "target": "/root/lab/lab08-resources"
+        },
+        {
+          "file": "orders-comma.csv",
+          "target": "/root/lab/lab08-resources"
+        },
+        {
+          "file": "orders-semicolon.csv",
+          "target": "/root/lab/lab08-resources"
+        },
+        {
+          "file": "orders-latin1.csv",
+          "target": "/root/lab/lab08-resources"
+        },
+        {
+          "file": "editor.sh",
+          "target": "/root/lab/lab08-resources"
+        },
+        {
+          "file": "hydra-etl-0.1.4.vsix",
+          "target": "/root/.hydra-vscode"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Read the comma-separated file",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the separator",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Fix the encoding",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
