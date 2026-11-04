@@ -4,7 +4,7 @@
 
 Inspect the source with a real SQL query:
 
-`python3 ../lab09-resources/lab09.py show source`{{exec}}
+`/opt/hydra/bin/python /root/lab/lab09-resources/lab09.py show source`{{exec}}
 
 The helper executes:
 
@@ -22,7 +22,7 @@ SELECT id, name, unit_price, quantity FROM product ORDER BY id;
 
 PostgreSQL has the destination table, but no rows:
 
-`python3 ../lab09-resources/lab09.py show destination`{{exec}}
+`/opt/hydra/bin/python /root/lab/lab09-resources/lab09.py show destination`{{exec}}
 
 Read the supplied manifests:
 

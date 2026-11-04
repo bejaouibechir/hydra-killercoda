@@ -1,0 +1,87 @@
+{
+  "title": "11. Load modes and atomicity",
+  "description": "Compare append, replace, and upsert, then observe a real batch-3 failure with and without atomic loading. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "products.csv",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "docker-compose.yml",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "sources.template.yaml",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "destinations.template.yaml",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "seed.sql",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "common.py",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "lab11.py",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "exercise.py",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "failure.csv",
+          "target": "/root/lab/lab11-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Inspect source and destination",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Compare the three load modes",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Observe a partial load",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Roll back the whole load",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

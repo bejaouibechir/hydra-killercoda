@@ -1,0 +1,74 @@
+{
+  "title": "10. MongoDB documents and schema drift [DRAFT]",
+  "description": "Blocked draft: compare warn, fail, and adapt against MongoDB documents that introduce a new field.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "docker-compose.yml",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "sources.template.yaml",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "lab10.py",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "probe.py",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "documents.json",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "compare.py",
+          "target": "/root/lab/lab10-resources"
+        },
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab10-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Inspect documents and the inference sample",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Compare warn and fail",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Compare adapt",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

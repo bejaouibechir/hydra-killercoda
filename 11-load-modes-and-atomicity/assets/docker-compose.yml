@@ -1,0 +1,20 @@
+name: hydra-lab11
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: lab11
+      POSTGRES_PASSWORD: lab11-postgres-only
+      POSTGRES_DB: hydra_lab11
+    ports:
+      - "127.0.0.1:5441:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab11 -d hydra_lab11"]
+      interval: 3s
+      timeout: 3s
+      retries: 60
+      start_period: 5s
+volumes:
+  postgres-data:

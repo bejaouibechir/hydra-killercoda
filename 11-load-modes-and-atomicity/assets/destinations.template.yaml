@@ -1,0 +1,14 @@
+version: "1.0"
+destinations:
+  target:
+    type: postgresql
+    connection:
+      host: 127.0.0.1
+      port: 5441
+      user: lab11
+      password: ${SECRET:PG_PASSWORD}
+      database: hydra_lab11
+      schema: lab11
+    load:
+      table: mode_append
+      mode: append

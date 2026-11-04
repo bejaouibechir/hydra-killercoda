@@ -6,7 +6,7 @@ Execute the job:
 
 Inspect PostgreSQL:
 
-`python3 ../lab09-resources/lab09.py show destination`{{exec}}
+`/opt/hydra/bin/python /root/lab/lab09-resources/lab09.py show destination`{{exec}}
 
 The helper executes:
 
@@ -26,13 +26,13 @@ ORDER BY id;
 
 Verify all IDs, names and totals:
 
-`python3 ../lab09-resources/lab09.py check result`{{exec}}
+`/opt/hydra/bin/python /root/lab/lab09-resources/lab09.py check result`{{exec}}
 
 Run the job a second time:
 
 `hdrctl run jobs/products`{{exec}}
 
-`python3 ../lab09-resources/lab09.py check result`{{exec}}
+`/opt/hydra/bin/python /root/lab/lab09-resources/lab09.py check result`{{exec}}
 
 There must still be exactly **five rows**. `mode: replace` refreshes the destination instead of appending copies.
 

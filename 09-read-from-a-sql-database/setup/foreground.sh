@@ -1,9 +1,19 @@
 #!/bin/bash
 echo "Installing Hydra and starting MySQL and PostgreSQL for lab 09..."
-for _ in $(seq 1 600); do
+echo "Please wait for Ready before starting the exercises."
+previous_status=""
+for elapsed in $(seq 1 600); do
+  status="$(cat /tmp/hydra-lab09-status 2>/dev/null || true)"
+  if [ -n "$status" ] && [ "$status" != "$previous_status" ]; then
+    echo "$status"
+    previous_status="$status"
+  elif [ $((elapsed % 30)) -eq 0 ]; then
+    echo "Setup is still running ($elapsed seconds). ${status:-Waiting for the setup script...}"
+  fi
   if [ -f /tmp/hydra-lab09-failed ]; then
     echo "Setup failed. Details:"
     tail -n 40 /tmp/hydra-lab09-setup.log
+    echo "Diagnostic: docker ps -a"
     exit 1
   fi
   if [ -f /tmp/hydra-lab09-ready ]; then
@@ -18,5 +28,7 @@ for _ in $(seq 1 600); do
 done
 if [ ! -f /tmp/hydra-lab09-ready ]; then
   echo "Setup exceeded ten minutes. Inspect /tmp/hydra-lab09-setup.log."
+  echo "Latest status: ${status:-no status received from the setup script}"
+  tail -n 20 /tmp/hydra-lab09-setup.log 2>/dev/null || true
   exit 1
 fi

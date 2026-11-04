@@ -1,0 +1,17 @@
+version: "1.0"
+sources:
+  orders:
+    type: mongodb
+    connection:
+      uri: "mongodb://127.0.0.1:27020/?serverSelectionTimeoutMS=5000"
+      database: hydra_lab10
+    extract:
+      collection: orders
+      filter: {}
+      limit: 102
+      batch_size: 1000
+    schema:
+      mode: infer_strict
+      sample_size: 100
+      drift_policy: warn
+      validation_policy: best_effort

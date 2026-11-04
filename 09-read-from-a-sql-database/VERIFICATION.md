@@ -1,5 +1,32 @@
 # Verification
 
+## Interpreter correction
+
+The live tutorial then failed with `No module named mysql` when a helper command
+used system `python3`. SQL drivers are installed in `/opt/hydra`, and activation
+inside the foreground setup script cannot be relied on in subsequent terminals.
+All five clickable helper commands in steps 1 and 3 now explicitly invoke
+`/opt/hydra/bin/python /root/lab/lab09-resources/lab09.py`.
+
+Each replacement was checked, including preservation of the rest of both lesson
+pages. This fixes the interpreter selection; the complete live transfer still
+needs to be confirmed by the learner. No engine code or system Python was changed.
+## Startup diagnostics update
+
+The author's Killercoda session report confirmed that all lesson resources
+arrived, the `sql-products` directory was created, and both database images
+were downloaded. Those observations rule out a total asset-deployment failure.
+A subsequent session report confirmed Hydra 0.16.0, both running containers and the readiness marker.
+
+The setup now reports each stage, makes Python setup output unbuffered, names
+missing assets, and displays the failed stage or last known status on timeout.
+The introduction tells learners to wait for Ready and gives the exercise folder.
+
+`python tests/check_setup_messages.py` passed four controlled Bash checks:
+ready state, failure with logs, timeout with current stage, and missing asset.
+Both edited setup scripts also passed Bash syntax checks. These tests do not
+claim to reproduce or resolve an unconfirmed database failure in Killercoda.
+
 Checked locally on 2026-10-31 with the published `hydra-etl==0.16.0` package on Windows.
 
 ## Checks completed
