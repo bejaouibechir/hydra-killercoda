@@ -33,6 +33,17 @@ Setup installs Hydra with its PostgreSQL driver in /opt/hydra. Every lesson help
 uses /opt/hydra/bin/python explicitly, regardless of terminal activation.
 It does not install an editor extension or restart editor processes.
 
+Killercoda startup uses `assets/start-database.sh` and plain `docker run`;
+Docker Compose is not required or invoked there. The Compose file remains an
+optional local development convenience only. Do not run both launch methods
+against the same port.
+
+The foreground startup and the first lesson both use `assets/wait-ready.sh`.
+They wait for the readiness marker, which is written only after PostgreSQL accepts
+connections and all five seeded tables have been verified. A failed or incomplete
+setup never produces a successful Check. The learner sees the current setup stage
+without being asked to run diagnostic commands.
+
 ## Local verification
 
 Install `requirements.txt` in an isolated Python environment, then run:

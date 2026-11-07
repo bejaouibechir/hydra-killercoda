@@ -28,10 +28,10 @@ def main():
         root = Path(temporary)
         prefix = shell_path(root)
         (root / "lab/load-modes").mkdir(parents=True)
-        foreground = (BASE / "setup/foreground.sh").read_text()
+        foreground = (BASE / "assets/wait-ready.sh").read_text()
         foreground = foreground.replace("/tmp/hydra-lab11", prefix + "/hydra-lab11")
         foreground = foreground.replace("/root/lab/load-modes", prefix + "/lab/load-modes")
-        foreground = foreground.replace("seq 1 600", "seq 1 2").replace("sleep 1", ":")
+        foreground = foreground.replace("seq 1 900", "seq 1 2").replace("sleep 1", ":")
         ready = root / "hydra-lab11-ready"
         failed = root / "hydra-lab11-failed"
         status = root / "hydra-lab11-status"
@@ -47,12 +47,12 @@ def main():
         log.write_text("TEST: PostgreSQL failed\n")
         result = run(foreground, root)
         assert result.returncode == 1
-        assert "TEST: PostgreSQL failed" in result.stdout
-        print("PASS: failure displays the setup log")
+        assert "Setup failed." in result.stdout
+        print("PASS: failure stops the learner without diagnostic commands")
         failed.unlink()
         result = run(foreground, root)
         assert result.returncode == 1
-        assert "Setup timed out" in result.stdout
+        assert "Setup is still incomplete" in result.stdout
         print("PASS: timeout never reports success")
         background = (BASE / "setup/background.sh").read_text()
         background = background.replace("/tmp/hydra-lab11", prefix + "/hydra-lab11")

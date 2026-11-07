@@ -11,7 +11,9 @@ dedicated PostgreSQL database. Each target starts with the same two rows:
 | 1 | 10 |
 | 2 | 20 |
 
-Allow setup to report **Ready** before continuing. Downloading the database image
+The presence of the CSV files does not mean PostgreSQL is ready.
+Allow setup to report **Ready** before continuing. Step 1 repeats this wait so that
+opening the lesson early cannot be mistaken for a completed setup. Downloading the database image
 and installing Hydra can take several minutes.
 
 **Duration:** approximately 15 minutes. Run each variant once, in lesson order.

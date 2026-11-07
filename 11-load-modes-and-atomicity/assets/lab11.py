@@ -69,15 +69,22 @@ def ready():
 
 
 def wait():
-    for _ in range(90):
+    deadline = time.monotonic() + 300
+    next_message = 0
+    last_error = None
+    while time.monotonic() < deadline:
         try:
             connection = connect()
             connection.close()
             print("PostgreSQL is accepting connections.")
             return
-        except Exception:
+        except Exception as error:
+            last_error = error
+            if time.monotonic() >= next_message:
+                print("Waiting for PostgreSQL to accept authenticated connections...", flush=True)
+                next_message = time.monotonic() + 15
             time.sleep(2)
-    raise TimeoutError("PostgreSQL did not become ready within three minutes.")
+    raise TimeoutError(f"PostgreSQL did not become ready within five minutes: {last_error}")
 
 
 def show(job):

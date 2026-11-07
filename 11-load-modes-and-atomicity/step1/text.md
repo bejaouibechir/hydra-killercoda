@@ -1,5 +1,10 @@
 # Inspect the source and destination
 
+First, let the automatic preparation finish. This command is part of the lesson;
+it waits for PostgreSQL and all five tables. Continue only when it reports **Ready**.
+
+`bash /root/lab/lab11-resources/wait-ready.sh`{{exec}}
+
 `cd /root/lab/load-modes`{{exec}}
 
 `/opt/hydra/bin/python /root/lab/lab11-resources/lab11.py ready`{{exec}}

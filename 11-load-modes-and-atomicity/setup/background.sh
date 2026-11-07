@@ -22,7 +22,7 @@ failed() {
 trap failed ERR
 progress "Waiting for lesson resources"
 files=(common.py lab11.py exercise.py products.csv failure.csv sources.template.yaml
-       destinations.template.yaml pipeline.yaml seed.sql docker-compose.yml requirements.txt)
+       destinations.template.yaml pipeline.yaml seed.sql start-database.sh wait-ready.sh requirements.txt)
 for attempt in $(seq 1 90); do
   missing=0
   for file in "${files[@]}"; do
@@ -44,10 +44,13 @@ ln -sf /opt/hydra/bin/hdrctl /usr/local/bin/hdrctl
 progress "Creating the five jobs and both CSV files"
 /opt/hydra/bin/python "$ASSETS/lab11.py" prepare
 progress "Downloading and starting PostgreSQL"
-docker compose -f "$ASSETS/docker-compose.yml" up -d --wait --wait-timeout 180
+bash "$ASSETS/start-database.sh"
 progress "Waiting for database access"
 /opt/hydra/bin/python "$ASSETS/lab11.py" wait
 progress "Seeding the five target tables"
 /opt/hydra/bin/python "$ASSETS/lab11.py" seed
+progress "Verifying database tables and installed Hydra"
+/opt/hydra/bin/hdrctl --version
+/opt/hydra/bin/python "$ASSETS/lab11.py" ready
 progress "Ready: Hydra, lesson files, and PostgreSQL"
 touch "$READY"

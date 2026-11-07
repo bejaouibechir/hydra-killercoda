@@ -13,10 +13,6 @@
           "target": "/root/lab/lab11-resources"
         },
         {
-          "file": "docker-compose.yml",
-          "target": "/root/lab/lab11-resources"
-        },
-        {
           "file": "sources.template.yaml",
           "target": "/root/lab/lab11-resources"
         },
@@ -46,6 +42,14 @@
         },
         {
           "file": "failure.csv",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "start-database.sh",
+          "target": "/root/lab/lab11-resources"
+        },
+        {
+          "file": "wait-ready.sh",
           "target": "/root/lab/lab11-resources"
         }
       ]

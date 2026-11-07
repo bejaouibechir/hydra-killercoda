@@ -1,4 +1,8 @@
 #!/bin/bash
 set -euo pipefail
-[ -f /tmp/hydra-lab11-ready ] || exit 1
+if [ ! -f /tmp/hydra-lab11-ready ] || [ -f /tmp/hydra-lab11-failed ]; then
+  cat /tmp/hydra-lab11-status 2>/dev/null || true
+  echo 'Preparation has not succeeded. Wait for Ready before using Check.'
+  exit 1
+fi
 exec /opt/hydra/bin/python /root/lab/lab11-resources/exercise.py check modes
