@@ -1,0 +1,13 @@
+version: '1.0'
+transformations:
+  steps:
+  - window:
+      partition_by: customer_id
+      order_by:
+      - col: id
+        desc: true
+      columns:
+        latest_no:
+          func: row_number
+  - filter:
+      expr: latest_no == 1

@@ -1,0 +1,99 @@
+{
+  "title": "14. Window functions",
+  "description": "Number customer orders, keep the latest, compute monthly running totals and country shares. About 20 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "lab14.py",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "sales.csv",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "sources.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "stage1.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "stage2.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "stage3.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "stage4.yaml",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "expected1.csv",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "expected2.csv",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "expected3.csv",
+          "target": "/root/lab/lab14-resources"
+        },
+        {
+          "file": "expected4.csv",
+          "target": "/root/lab/lab14-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Number each customer\u2019s orders",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Keep the latest order per customer",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Run a total within each month",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Calculate each country share",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

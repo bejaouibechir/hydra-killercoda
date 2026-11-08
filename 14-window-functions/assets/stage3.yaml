@@ -1,0 +1,14 @@
+version: '1.0'
+transformations:
+  steps:
+  - cast:
+      mapping:
+        amount: float
+  - window:
+      partition_by: month
+      order_by:
+      - id
+      columns:
+        month_running_total:
+          func: cumsum
+          col: amount

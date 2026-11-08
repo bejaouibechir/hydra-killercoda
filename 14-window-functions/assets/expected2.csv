@@ -1,0 +1,4 @@
+id,customer_id,country,month,amount,latest_no
+4,C300,FR,2025-02,50,1
+5,C200,BE,2025-02,20,1
+6,C100,FR,2025-02,35,1

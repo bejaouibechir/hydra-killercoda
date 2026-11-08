@@ -1,0 +1,10 @@
+version: '1.0'
+transformations:
+  steps:
+  - window:
+      partition_by: customer_id
+      order_by:
+      - id
+      columns:
+        order_no:
+          func: row_number

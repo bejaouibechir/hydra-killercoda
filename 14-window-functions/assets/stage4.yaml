@@ -1,0 +1,15 @@
+version: '1.0'
+transformations:
+  steps:
+  - cast:
+      mapping:
+        amount: float
+  - window:
+      partition_by: country
+      columns:
+        country_total:
+          func: sum
+          col: amount
+  - calculate:
+      column: country_share
+      expr: amount / country_total
