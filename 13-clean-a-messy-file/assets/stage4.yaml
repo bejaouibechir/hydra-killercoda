@@ -1,0 +1,22 @@
+version: '1.0'
+transformations:
+  steps:
+  - trim:
+      columns:
+      - customer
+      - country
+      - status
+  - clean:
+      columns:
+      - status
+      case: lower
+  - deduplicate:
+      columns:
+      - id
+      keep: last
+  - cast:
+      mapping:
+        amount: float
+  - fill_null:
+      columns:
+        amount: 0

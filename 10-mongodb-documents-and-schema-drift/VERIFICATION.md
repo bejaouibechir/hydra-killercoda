@@ -1,3 +1,75 @@
+# Live re-verification — 2026-11-08
+
+Status: **PARTIALLY FIXED — LAB STILL BLOCKED**.
+
+Tested the published hydra-etl 0.19.1 package in an isolated Python 3.13
+virtual environment, with PyMongo 4.19.0 and a real local MongoDB 7.0 container.
+The imported package path and version were checked outside the engine checkout.
+No engine code was modified. No commands were executed on Killercoda.
+
+## Fixed behavior
+
+The original boundary probe now passes: SourceParser/JobExecutor forwards the
+schema, warn emits a drift warning, fail raises SchemaDriftError at document 101,
+and adapt retains the new field in the connector output.
+
+## Blocker 1: the original job cannot start extraction
+
+All three original jobs fail with:
+
+```text
+ValueError: source extract must define 'table' or 'query'
+```
+
+The MongoDB source declares `extract.collection: orders`, as expected by its
+connector, but JobExecutor._resolve_extract_options requires table or query.
+The engine must accept collection-based sources through this execution path.
+
+For diagnosis only, a fresh temporary copy added `table: orders` alongside
+`collection: orders`. The repository's source template was not changed.
+
+## Blocker 2: adapt loses the added field in the complete transfer
+
+With that temporary YAML adjustment, the actual CLI produced:
+
+| Policy | CLI exit | CSV rows | Observed result | Acceptance |
+| --- | ---: | ---: | --- | --- |
+| warn | 0 | 102 | Drift warning; original three columns | PASS |
+| fail | 1 | 0 | SchemaDriftError names sales_channel at document 101; no CSV output | PASS |
+| adapt | 0 | 102 | CSV contains only _id, customer, amount; sales_channel is missing | FAIL |
+
+A separate direct extraction from the same real MongoDB server confirms that
+adapt returns sales_channel=web for ORD-101 and sales_channel=store for ORD-102.
+The first record still has only the original three keys. Thus adaptation works
+at the connector boundary, but the new field is lost downstream in the complete
+MongoDB-to-CSV transfer. The precise downstream cause needs investigation;
+this report does not attribute it to a specific writer implementation.
+
+Reproduction fixture: 100 baseline documents followed by two documents adding
+sales_channel; schema.mode=infer_strict, sample_size=100, extract.batch_size=1000.
+Expected adapt result: 102 rows, four columns, both new values preserved, and
+empty cells for the 100 documents without the new field.
+
+The lab remains pinned to 0.16.0. Changing that pin to 0.19.1 alone is insufficient.
+Do not publish the lab as working until both complete-transfer blockers pass.
+Linux/Killercoda startup was not retested in this audit.
+
+## Local evidence
+
+Evidence is retained under the Codex visualization workspace
+`C:/Users/DELL/.codex/visualizations/2026/10/29/01a1885f-418d-77e0-bb96-b6816681834f`:
+
+- `lab10-audit-0191-project/evidence`: original jobs, CLI logs and JSON results.
+- `lab10-audit-0191-table/evidence`: temporary table+collection jobs, CLI logs and JSON results.
+- `lab10-audit-0191-table/jobs/*/output`: generated CSV files.
+- `lab10-audit-0191-table/direct-live-adapt.json`: direct real MongoDB extraction.
+
+The temporary MongoDB audit container was stopped after testing.
+
+---
+
+# Historical verification (0.16.0)
+
 # Verification — LAB lab-02-03
 
 Date: 2026-10-31. Status: **BLOCKED DRAFT**.

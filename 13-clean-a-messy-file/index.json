@@ -1,0 +1,99 @@
+{
+  "title": "13. Clean a messy file",
+  "description": "Clean one CSV with trim, clean, deduplicate, and fill_null, checking each intermediate result. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "lab13.py",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "orders.csv",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "sources.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "stage1.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "stage2.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "stage3.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "stage4.yaml",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "expected1.csv",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "expected2.csv",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "expected3.csv",
+          "target": "/root/lab/lab13-resources"
+        },
+        {
+          "file": "expected4.csv",
+          "target": "/root/lab/lab13-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Trim surrounding spaces",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Normalize status case",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Remove duplicate IDs",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Fill the missing amount",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

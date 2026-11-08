@@ -1,0 +1,5 @@
+id,customer,country,status,amount
+1,Alice,FR,paid,120
+2,Bob,BE,paid,80
+3,Cara,DE,cancelled,
+4,Dan,FR,paid,45

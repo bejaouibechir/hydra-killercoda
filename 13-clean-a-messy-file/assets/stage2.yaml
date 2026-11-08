@@ -1,0 +1,12 @@
+version: '1.0'
+transformations:
+  steps:
+  - trim:
+      columns:
+      - customer
+      - country
+      - status
+  - clean:
+      columns:
+      - status
+      case: lower
