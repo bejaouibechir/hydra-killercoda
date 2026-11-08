@@ -1,0 +1,86 @@
+{
+  "title": "16. pandas vs DuckDB",
+  "description": "Aggregate a five-million-row CSV with pandas and auto; compare time, peak memory and identical results. About 25 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "generate.py",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "benchmark.py",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "pandas.sources.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "pandas.pipeline.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "pandas.transformations.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "pandas.destinations.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "auto.sources.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "auto.pipeline.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "auto.transformations.yaml",
+          "target": "/root/lab/lab16-resources"
+        },
+        {
+          "file": "auto.destinations.yaml",
+          "target": "/root/lab/lab16-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Generate the five-million-row CSV",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Run with pandas",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Run with auto and compare",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
