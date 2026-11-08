@@ -1,0 +1,91 @@
+{
+  "title": "17. Three ways",
+  "description": "Clean and aggregate the same CSV in SQL, pandas and Hydra; compare outputs, length and typo errors. About 25 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "orders.csv",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "query.solution.sql",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "pandas.solution.py",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "transformations.solution.yaml",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "sources.yaml",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "expected.csv",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "run_sql.py",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "lab17.py",
+          "target": "/root/lab/lab17-resources"
+        },
+        {
+          "file": "errors.py",
+          "target": "/root/lab/lab17-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Write and run the SQL query",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Write and run the pandas script",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Write and run the Hydra job",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Compare source length and errors",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

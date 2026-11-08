@@ -1,0 +1,33 @@
+version: '1.0'
+transformations:
+  steps:
+  - clean:
+      columns:
+      - country
+      case: upper
+  - clean:
+      columns:
+      - status
+      case: lower
+  - filter:
+      expr: status == 'paid'
+  - window:
+      partition_by: customer_id
+      order_by:
+      - col: id
+        desc: true
+      columns:
+        rn:
+          func: row_number
+  - filter:
+      expr: rn == 1
+  - cast:
+      mapping:
+        amount: float
+  - aggregate:
+      by:
+      - country
+      agg:
+        revenue:
+          func: sum
+          col: amount
