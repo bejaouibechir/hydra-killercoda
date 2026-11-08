@@ -1,0 +1,6 @@
+version: '1.0'
+transformations:
+  steps:
+  - union:
+      right: more_orders
+      distinct: true

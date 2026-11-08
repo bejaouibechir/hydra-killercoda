@@ -1,0 +1,6 @@
+id,customer_id,amount,status
+1,C100,120,paid
+3,C100,45,paid
+4,C102,50,paid
+2,C101,90,paid
+5,C103,30,paid

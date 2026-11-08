@@ -1,0 +1,106 @@
+{
+  "title": "15. Join, merge, union",
+  "description": "Compare three ways to combine orders with a second CSV source. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "lab15.py",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "orders.csv",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "customers.csv",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "order_updates.csv",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "more_orders.csv",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "sources1.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "sources2.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "sources3.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "stage1.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "stage2.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "stage3.yaml",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "expected1.csv",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "expected2.csv",
+          "target": "/root/lab/lab15-resources"
+        },
+        {
+          "file": "expected3.csv",
+          "target": "/root/lab/lab15-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Join orders with customer names",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Merge order updates by ID",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Union another set of orders",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
