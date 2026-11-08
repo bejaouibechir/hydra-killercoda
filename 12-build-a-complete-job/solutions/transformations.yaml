@@ -1,0 +1,6 @@
+version: "1.0"
+transformations:
+  steps:
+    - cast:
+        mapping:
+          quantity: int

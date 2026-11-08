@@ -1,0 +1,68 @@
+{
+  "before": [
+    [
+      "SKU-001",
+      "Notebook (old)",
+      "10.00",
+      2
+    ],
+    [
+      "SKU-099",
+      "Legacy product",
+      "5.00",
+      1
+    ]
+  ],
+  "first": [
+    [
+      "SKU-001",
+      "Notebook",
+      "12.50",
+      4
+    ],
+    [
+      "SKU-002",
+      "Keyboard",
+      "29.95",
+      3
+    ],
+    [
+      "SKU-003",
+      "Mouse",
+      "8.75",
+      6
+    ],
+    [
+      "SKU-099",
+      "Legacy product",
+      "5.00",
+      1
+    ]
+  ],
+  "second": [
+    [
+      "SKU-001",
+      "Notebook",
+      "12.50",
+      4
+    ],
+    [
+      "SKU-002",
+      "Keyboard Pro",
+      "34.95",
+      7
+    ],
+    [
+      "SKU-003",
+      "Mouse",
+      "8.75",
+      6
+    ],
+    [
+      "SKU-099",
+      "Legacy product",
+      "5.00",
+      1
+    ]
+  ]
+}
