@@ -1,0 +1,21 @@
+version: '1.0'
+workflow:
+  name: rollback_demo
+  rollback: true
+  trigger:
+    type: manual
+  steps:
+    - name: load_invoices
+      type: job
+      job: ../jobs/invoices
+    - name: load_payments
+      type: job
+      job: ../jobs/payments
+      depends_on: [load_invoices]
+    - name: fail_third
+      type: action
+      action: python
+      params:
+        file_path: scripts/fail.py
+      undo: none
+      depends_on: [load_payments]

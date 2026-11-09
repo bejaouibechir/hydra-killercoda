@@ -1,0 +1,26 @@
+{
+  "title": "20. Rollback in action",
+  "description": "Load two PostgreSQL tables, undo them after a failure, then resume a stopped rollback. About 20 minutes.",
+  "details": {
+    "assets": {"host01": [
+      {"file": "requirements.txt", "target": "/root/lab/lab20-resources"},
+      {"file": "prepare.py", "target": "/root/lab/lab20-resources"},
+      {"file": "common.py", "target": "/root/lab/lab20-resources"},
+      {"file": "lab20.py", "target": "/root/lab/lab20-resources"},
+      {"file": "fail.py", "target": "/root/lab/lab20-resources"},
+      {"file": "workflow.yaml", "target": "/root/lab/lab20-resources"},
+      {"file": "invoices.csv", "target": "/root/lab/lab20-resources"},
+      {"file": "payments.csv", "target": "/root/lab/lab20-resources"},
+      {"file": "start-db.sh", "target": "/root/lab/lab20-resources"}
+    ]},
+    "intro": {"text": "intro.md", "background": "setup/background.sh", "foreground": "setup/foreground.sh"},
+    "steps": [
+      {"title": "Inspect the two target tables", "text": "step1/text.md", "verify": "step1/verify.sh"},
+      {"title": "Fail at step three and roll back", "text": "step2/text.md", "verify": "step2/verify.sh"},
+      {"title": "Stop a rollback safely", "text": "step3/text.md", "verify": "step3/verify.sh"},
+      {"title": "Resume with hdrctl workflow undo", "text": "step4/text.md", "verify": "step4/verify.sh"}
+    ],
+    "finish": {"text": "finish.md"}
+  },
+  "backend": {"imageid": "ubuntu"}
+}

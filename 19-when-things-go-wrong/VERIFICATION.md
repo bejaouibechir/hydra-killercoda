@@ -7,3 +7,6 @@ Using the installed hydra-etl 0.19.1 package, I prepared a fresh learner directo
 Observed results: A and C succeeded in every run, B failed in every run; D was absent under `fail`, marked skipped under `skip`, and succeeded under `continue`. With `retry: {max: 2, delay: 1, backoff: exponential}`, B's logs showed waits of 1 and 2 seconds and then gave up after two retries; D ran because `on_failure: continue` was retained.
 
 The manifest references existing assets and all four steps; Python sources compiled in memory. A Git Bash syntax command could not start in this environment, so Ubuntu/Killercoda startup remains untested. The Killercoda Check scripts only read files created by this lab. No engine files were modified.
+
+Follow-up 2026-11-09: step 4 now includes a terminal command that writes the retry block before running Hydra. I extracted that exact command from the lesson, applied it to a fresh local workflow, ran the published engine, and confirmed reports/retry.json and the retry Check both pass. Existing Killercoda sessions still need the manual edit or a published/restarted scenario.
+
