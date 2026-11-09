@@ -1,0 +1,55 @@
+{
+  "title": "23. A project that runs itself",
+  "description": "Observe cron, file, webhook and after-project triggers in two local Hydra projects. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab23-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab23-resources"
+        },
+        {
+          "file": "lab23.py",
+          "target": "/root/lab/lab23-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Start the watcher",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Watch clock and file",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Call the webhook",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Follow the second project",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
