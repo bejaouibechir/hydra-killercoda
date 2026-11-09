@@ -1,0 +1,30 @@
+version: '1.0'
+workflow:
+  name: when_things_go_wrong
+  trigger:
+    type: manual
+  steps:
+    - name: A_start
+      type: action
+      action: log
+      params:
+        message: "A succeeded"
+    - name: B_fails
+      type: action
+      action: python
+      params:
+        script: "raise RuntimeError('intentional failure in B')"
+      depends_on: [A_start]
+      on_failure: fail
+    - name: C_independent
+      type: action
+      action: log
+      params:
+        message: "C is independent of B"
+      depends_on: [A_start]
+    - name: D_after_B
+      type: action
+      action: log
+      params:
+        message: "D ran after B"
+      depends_on: [B_fails]

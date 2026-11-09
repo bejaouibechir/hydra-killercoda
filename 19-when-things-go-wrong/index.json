@@ -1,0 +1,21 @@
+{
+  "title": "19. When things go wrong",
+  "description": "Compare fail, skip and continue, then observe exponential retry. About 15 minutes.",
+  "details": {
+    "assets": {"host01": [
+      {"file": "workflow.yaml", "target": "/root/lab/lab19-resources"},
+      {"file": "requirements.txt", "target": "/root/lab/lab19-resources"},
+      {"file": "prepare.py", "target": "/root/lab/lab19-resources"},
+      {"file": "lab19.py", "target": "/root/lab/lab19-resources"}
+    ]},
+    "intro": {"text": "intro.md", "background": "setup/background.sh", "foreground": "setup/foreground.sh"},
+    "steps": [
+      {"title": "Fail: stop the workflow", "text": "step1/text.md", "verify": "step1/verify.sh"},
+      {"title": "Skip: keep the other branch", "text": "step2/text.md", "verify": "step2/verify.sh"},
+      {"title": "Continue: run the dependent step", "text": "step3/text.md", "verify": "step3/verify.sh"},
+      {"title": "Retry with exponential backoff", "text": "step4/text.md", "verify": "step4/verify.sh"}
+    ],
+    "finish": {"text": "finish.md"}
+  },
+  "backend": {"imageid": "ubuntu"}
+}
