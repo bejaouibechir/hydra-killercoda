@@ -1,0 +1,66 @@
+{
+  "title": "25. Reversible actions",
+  "description": "Create a folder and call a local webhook, then undo both after an intentional failure. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab25-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab25-resources"
+        },
+        {
+          "file": "lab25.py",
+          "target": "/root/lab/lab25-resources"
+        },
+        {
+          "file": "webhook_server.py",
+          "target": "/root/lab/lab25-resources"
+        },
+        {
+          "file": "create_folder.py",
+          "target": "/root/lab/lab25-resources"
+        },
+        {
+          "file": "remove_folder.py",
+          "target": "/root/lab/lab25-resources"
+        },
+        {
+          "file": "fail.py",
+          "target": "/root/lab/lab25-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Create a folder with undo",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Call a webhook with undo",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Fail and inspect reverse order",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
