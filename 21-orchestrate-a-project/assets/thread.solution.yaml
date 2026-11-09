@@ -1,0 +1,22 @@
+version: '1.0'
+thread:
+  - mode: sequential
+    workflows:
+      - name: load_referentials
+  - mode: parallel
+    delay_after: 200ms
+    workflows:
+      - name: load_sales
+        fallback:
+          use: [load_sales_backup]
+          when: "not source_available('sales_db')"
+          on_probe_error: keep
+      - name: load_stock
+  - mode: sequential
+    workflows:
+      - name: build_reports
+loops:
+  - from: load_stock
+    to: load_sales
+    times: 2
+    delay: 100ms

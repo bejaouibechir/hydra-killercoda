@@ -1,0 +1,79 @@
+{
+  "title": "21. Orchestrate a project",
+  "description": "Build a three-stage thread with four workflows, a loop and a PostgreSQL fallback. About 20 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "lab21.py",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "build_reports.py",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "thread.solution.yaml",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "refs.csv",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "stock.csv",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "sales-backup.csv",
+          "target": "/root/lab/lab21-resources"
+        },
+        {
+          "file": "start-db.sh",
+          "target": "/root/lab/lab21-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Build the thread",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Run the parallel stage and loop",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Stop PostgreSQL and take the fallback",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Restart PostgreSQL",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
