@@ -1,0 +1,3 @@
+# Workflow graph complete
+
+The graph has five arrows: `load_orders → validate_orders`, both loading steps → `enrich_orders`, and both middle steps → `publish_report`. The two roots overlap in the measured report. A dependent step begins after the prerequisite has ended. Hydra schedules this workflow in execution groups: `validate_orders` begins with `enrich_orders` after both root steps finish, even though its only direct dependency is `load_orders`. Keep the graph edges based on `depends_on`, not on every coincidentally earlier timestamp. Read the actual timestamps in `report.json`; durations may vary on each run.

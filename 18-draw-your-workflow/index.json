@@ -1,0 +1,58 @@
+{
+  "title": "18. Draw your workflow",
+  "description": "Run five timed workflow steps, read their start/end times and draw the dependency graph. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "workflow.yaml",
+          "target": "/root/lab/lab18-resources"
+        },
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab18-resources"
+        },
+        {
+          "file": "measure.py",
+          "target": "/root/lab/lab18-resources"
+        },
+        {
+          "file": "check.py",
+          "target": "/root/lab/lab18-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab18-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Inspect dependencies",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Run and read times",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Draw the graph",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

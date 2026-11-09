@@ -1,0 +1,39 @@
+version: '1.0'
+workflow:
+  name: draw_your_workflow
+  trigger:
+    type: manual
+  steps:
+  - name: load_orders
+    type: action
+    action: delay
+    params:
+      seconds: 1.2
+  - name: load_customers
+    type: action
+    action: delay
+    params:
+      seconds: 1.8
+  - name: validate_orders
+    type: action
+    action: delay
+    params:
+      seconds: 0.8
+    depends_on:
+    - load_orders
+  - name: enrich_orders
+    type: action
+    action: delay
+    params:
+      seconds: 1.0
+    depends_on:
+    - load_orders
+    - load_customers
+  - name: publish_report
+    type: action
+    action: delay
+    params:
+      seconds: 0.3
+    depends_on:
+    - validate_orders
+    - enrich_orders
