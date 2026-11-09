@@ -1,0 +1,63 @@
+{
+  "title": "26. One project, three environments",
+  "description": "Declare four parameters, run one Hydra project in dev, test and prod, then override one value for a single run. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab26-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab26-resources"
+        },
+        {
+          "file": "lab26.py",
+          "target": "/root/lab/lab26-resources"
+        },
+        {
+          "file": "workflow.yaml",
+          "target": "/root/lab/lab26-resources"
+        },
+        {
+          "file": "thread.yaml",
+          "target": "/root/lab/lab26-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Declare four parameters",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Create dev, test and prod",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Run the same project three times",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Override a value for one run",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

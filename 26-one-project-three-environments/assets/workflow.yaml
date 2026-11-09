@@ -1,0 +1,11 @@
+version: '1.0'
+workflow:
+  name: show_parameters
+  trigger:
+    type: manual
+  steps:
+    - name: display_values
+      type: action
+      action: log
+      params:
+        message: "min_amount={{ param:min_amount }} country={{ param:country }} batch_label={{ param:batch_label }} sample_size={{ param:sample_size }}"
