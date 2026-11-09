@@ -1,18 +1,53 @@
-# Draw the graph in the terminal
+# Draw the workflow in the terminal
 
-Create `graph.txt` as an ASCII edge diagram: one visible arrow for each direct `depends_on` relationship in `workflow.yaml`. Use the format `[source] ----> [target]`. There are five direct arrows among the five named steps.
+The five steps form this graph. The two loads start in parallel. `load_orders` leads to `validate_orders` and `enrich_orders`; `load_customers` also leads to `enrich_orders`. Both middle steps lead to `publish_report`. Where the horizontal `load_customers` line crosses the vertical `validate_orders` line (`-|`), there is no connection.
 
-The starter file shows the syntax. Enter your arrows with a terminal here-document (replace the example placeholders with real step names):
+```text
++---------------+
+| load_orders   |----+------------------------+
++---------------+    |                        |
+                     v                        v
+              +-----------------+      +---------------+
+              | validate_orders |      | enrich_orders |
+              +-----------------+      +---------------+
+                      |                       ^    |
+                      |                       |    |
++----------------+    |                       |    |
+| load_customers |----|-----------------------+    |
++----------------+    |                            |
+                      +------------+---------------+
+                                   |
+                                   v
+                          +------------------+
+                          | publish_report   |
+                          +------------------+
+```
+
+Reproduce and display it directly in the Killercoda terminal:
 
 ```bash
 cd /root/lab/draw-workflow
-cat graph.txt
 cat > graph.txt <<'EOF'
-# My workflow graph
-[source_step] ----> [target_step]
-# Add the other four direct arrows here.
++---------------+
+| load_orders   |----+------------------------+
++---------------+    |                        |
+                     v                        v
+              +-----------------+      +---------------+
+              | validate_orders |      | enrich_orders |
+              +-----------------+      +---------------+
+                      |                       ^    |
+                      |                       |    |
++----------------+    |                       |    |
+| load_customers |----|-----------------------+    |
++----------------+    |                            |
+                      +------------+---------------+
+                                   |
+                                   v
+                          +------------------+
+                          | publish_report   |
+                          +------------------+
 EOF
 cat graph.txt
 ```
 
-After writing the five real arrows, press **Check**. It compares your ASCII graph with the workflow dependencies and the measured run order. The terminal displays the graph directly; no Markdown renderer or editor is needed.
+Compare the graph with `workflow.yaml` and the start/end times in `report.json`, then press **Check**.

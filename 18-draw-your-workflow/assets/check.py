@@ -13,19 +13,32 @@ def report():
  if max(x['started_epoch'] for x in roots)>=min(x['ended_epoch'] for x in roots):raise ValueError('Root jobs did not overlap')
  if not all(x['success'] for x in observed.values()):raise ValueError('A step failed')
  print('PASS: five timed steps, overlapping roots and dependency order')
+ART = """+---------------+
+| load_orders   |----+------------------------+
++---------------+    |                        |
+                     v                        v
+              +-----------------+      +---------------+
+              | validate_orders |      | enrich_orders |
+              +-----------------+      +---------------+
+                      |                       ^    |
+                      |                       |    |
++----------------+    |                       |    |
+| load_customers |----|-----------------------+    |
++----------------+    |                            |
+                      +------------+---------------+
+                                   |
+                                   v
+                          +------------------+
+                          | publish_report   |
+                          +------------------+"""
+
 def graph():
  report()
  raw=(ROOT/'graph.txt').read_text(encoding='utf-8')
- lines=[line.strip() for line in raw.splitlines() if line.strip() and not line.lstrip().startswith('#')]
- pattern=re.compile(r'^\[([a-z_]+)\]\s*-{2,}>\s*\[([a-z_]+)\]$')
- edges=[]
- for line in lines:
-  match=pattern.fullmatch(line)
-  if not match:raise ValueError(f'Not an ASCII arrow: {line!r}. Use [source] ----> [target].')
-  edges.append(match.groups())
- if len(edges)!=5 or len(set(edges))!=5 or set(edges)!=EXPECTED:
-  raise ValueError(f'Graph needs five direct arrows: missing={sorted(EXPECTED-set(edges))}, extra={sorted(set(edges)-EXPECTED)}')
- print('PASS: terminal ASCII graph has the five exact dependency arrows')
+ normalize=lambda value: '\n'.join(line.rstrip() for line in value.strip().splitlines())
+ if normalize(raw)!=normalize(ART):
+  raise ValueError('graph.txt differs from the five-step ASCII diagram shown in the lesson')
+ print('PASS: the boxed ASCII graph matches all five workflow dependencies')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('action',choices=['report','graph']);a=p.parse_args()
  try:report() if a.action=='report' else graph()
