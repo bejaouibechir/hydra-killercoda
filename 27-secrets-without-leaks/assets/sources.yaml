@@ -1,0 +1,12 @@
+version: '1.0'
+sources:
+  products:
+    type: postgresql
+    connection:
+      host: 127.0.0.1
+      port: 5447
+      user: lab27
+      password: ${SECRET:db.password}
+      database: lab27db
+    extract:
+      table: products

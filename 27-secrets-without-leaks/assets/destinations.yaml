@@ -1,0 +1,8 @@
+version: '1.0'
+destinations:
+  snapshot:
+    type: csv
+    connection: {}
+    load:
+      table: ../../outputs/products.csv
+      mode: replace

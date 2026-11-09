@@ -1,0 +1,66 @@
+{
+  "title": "27. Secrets without leaks",
+  "description": "Use a private project secret, then an environment variable, then --secrets-file outside the project while keeping Git clean. About 20 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab27-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab27-resources"
+        },
+        {
+          "file": "start-db.sh",
+          "target": "/root/lab/lab27-resources"
+        },
+        {
+          "file": "lab27.py",
+          "target": "/root/lab/lab27-resources"
+        },
+        {
+          "file": "sources.yaml",
+          "target": "/root/lab/lab27-resources"
+        },
+        {
+          "file": "destinations.yaml",
+          "target": "/root/lab/lab27-resources"
+        },
+        {
+          "file": "pipeline.yaml",
+          "target": "/root/lab/lab27-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Use a project secret",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Move it to an environment variable",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Use a file outside the project",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
