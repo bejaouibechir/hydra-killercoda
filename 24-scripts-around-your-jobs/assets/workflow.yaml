@@ -1,0 +1,30 @@
+workflow:
+  name: main
+  trigger:
+    type: manual
+  steps:
+    - name: archive_input
+      type: action
+      action: bash
+      params:
+        command: "gzip -c input/orders.csv > archive/orders.csv.gz"
+    - name: copy_orders
+      type: job
+      job: ../jobs/copy_orders
+      depends_on: [archive_input]
+    - name: check_output
+      type: action
+      action: python
+      params:
+        file_path: scripts/check_output.py
+      depends_on: [copy_orders]
+    - name: notify_node01
+      type: action
+      action: ssh
+      enabled: false
+      params:
+        host: node01
+        username: root
+        command: "mkdir -p /root/lab24-remote && hostname > /root/lab24-remote/receipt.txt"
+        timeout: 20
+      depends_on: [check_output]

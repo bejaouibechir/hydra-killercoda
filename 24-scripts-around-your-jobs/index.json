@@ -1,0 +1,62 @@
+{
+  "title": "24. Scripts around your jobs",
+  "description": "Archive a CSV, verify a job result, then use Hydra SSH on a second node. About 15 minutes.",
+  "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "requirements.txt",
+          "target": "/root/lab/lab24-resources"
+        },
+        {
+          "file": "orders.csv",
+          "target": "/root/lab/lab24-resources"
+        },
+        {
+          "file": "workflow.yaml",
+          "target": "/root/lab/lab24-resources"
+        },
+        {
+          "file": "check_output.py",
+          "target": "/root/lab/lab24-resources"
+        },
+        {
+          "file": "prepare.py",
+          "target": "/root/lab/lab24-resources"
+        },
+        {
+          "file": "lab24.py",
+          "target": "/root/lab/lab24-resources"
+        }
+      ]
+    },
+    "intro": {
+      "text": "intro.md",
+      "background": "setup/background.sh",
+      "foreground": "setup/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Read the action chain",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Archive, load and check",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Run the remote action",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
